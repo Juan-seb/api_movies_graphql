@@ -1,0 +1,18 @@
+{
+  "name": "api_movies_graphql",
+  "version": "1.0.0",
+  "description": "Api of movies builded with graphql, powered by the movie db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "npx nodemon index.js"
+  },
+  "keywords": [
+    "graphql",
+    "api",
+    "movies"
+  ],
+  "author": "Juan Sebastian Angulo Cita",
+  "license": "MIT"
+}
