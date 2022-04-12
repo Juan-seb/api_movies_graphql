@@ -43,8 +43,8 @@ const typeDefs = gql`
     poster: String!
     production_companies: [Company]
     production_countries: [Country]
-    release_date: Date!
-    runtime: Int
+    release_date: Date
+    duration: Int
     spoken_languages: [String]
     status: String
     title: String!
@@ -95,15 +95,15 @@ const typeDefs = gql`
     ):[PreviewMovie]!
 
     getProviders(
-      movie_id: ID
+      movie_id: ID!
     ): [Provider]
 
     getMovieSearched(
-      search: String
+      search: String!
     ):[PreviewMovie]!
 
     getCast(
-      movie_id: ID
+      movie_id: ID!
     ): [CastActor]!
 
   }

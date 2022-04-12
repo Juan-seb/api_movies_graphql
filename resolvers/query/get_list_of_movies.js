@@ -1,7 +1,4 @@
-import dotenv from 'dotenv'
-import fetch from 'node-fetch'
-
-dotenv.config()
+import { key, fetch } from '../get_required_tools.js'
 
 const getListOfMovies = async (root, args) => {
   const { page, year, semester, region } = args
@@ -23,17 +20,20 @@ const getListOfMovies = async (root, args) => {
   }
 
   const url = "https://api.themoviedb.org/3/discover/movie?api_key="
-  const urlWithFilters = `${url}${process.env.API_KEY}${sortBy}${pageResult}${yearToSearch}${regionToSearch}${primaryRelease}${releaseDateLte}${releaseDateGte}${general}`
+  const urlWithFilters = `${url}${key}${sortBy}${pageResult}${yearToSearch}${regionToSearch}${primaryRelease}${releaseDateLte}${releaseDateGte}${general}`
 
   try {
+
+    // Get the movie list of the specific time
     const res = await fetch(urlWithFilters, {
       headers: {
-        "Accept": "*/*"
+        "Accept": "application/json"
       }
     })
 
     const json = await res.json()
 
+    // Map the results
     const resToGraph = json.results.map(result => {
 
       const { id, overview, poster_path, release_date, title } = result
@@ -48,8 +48,6 @@ const getListOfMovies = async (root, args) => {
 
     })
 
-    console.log(resToGraph)
-    
     return resToGraph
 
   } catch (error) {

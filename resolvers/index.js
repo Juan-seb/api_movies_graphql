@@ -7,11 +7,12 @@ const resolvers = {
     name: 'Date',
     description: 'Scalar value of date',
     parseValue: (value) => {
+      // return the date
       return new Date(value) 
 
     },
     serialize: (value) => {
-      console.log(typeof new Date(value).getTime())
+      // Return a integer, convert the date to a integer
       return new Date(value).getTime()
     }
   })
