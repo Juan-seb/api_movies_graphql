@@ -58,9 +58,9 @@ const typeDefs = gql`
 
   type CastActor{
     id: ID!
-    gender: Int!
+    gender: String!
     name: String!
-    profile: String!
+    profileImage: String
     characterInMovie: String!
   }
 
@@ -91,6 +91,9 @@ const typeDefs = gql`
     getGenres: [Genre]!
 
     getListOfMoviesByGenre(
+      page: Int!
+      year: Int!
+      region: [String]
       genre:[Int!]!
     ):[PreviewMovie]!
 
@@ -99,10 +102,11 @@ const typeDefs = gql`
     ): [Provider]
 
     getMovieSearched(
+      page: Int!
       search: String!
     ):[PreviewMovie]!
 
-    getCast(
+    getActors(
       movie_id: ID!
     ): [CastActor]!
 
